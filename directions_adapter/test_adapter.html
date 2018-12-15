@@ -17,20 +17,6 @@
             margin: 0;
             padding: 0;
         }
-
-        #floating-panel {
-            position: absolute;
-            top: 10px;
-            left: 25%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto', 'sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-        }
     </style>
 </head>
 <body>
@@ -51,11 +37,12 @@
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
             origin: "Holzkirchen, BY",
-            destination: "Frankfurt am Main, HE",
-            travelMode: 'DRIVING'
+            destination: "New York, NY",
+            travelMode: 'TRANSIT'
         }, function (response, status) {
             if (status === 'OK') {
                 directionsDisplay.setDirections(response);
+                console.log(response);
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
