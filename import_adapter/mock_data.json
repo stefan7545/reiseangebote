@@ -1,4 +1,3 @@
-[
   {
     "legId": 0,
     "origin": {
@@ -11,44 +10,4 @@
       "dateTime": "2018-12-18T00:30:00+01:00",
       "dynamisierung": ""
     }
-  },
-  {
-    "legId": 1,
-    "origin": {
-      "place": "Frankfurt am Main, Deutschland",
-      "dateTime": "2018-12-18T08:30:00+01:00",
-      "dynamisierung": ""
-    },
-    "destination": {
-      "place": "Hamburg Hbf, 20099 Hamburg, Deutschland",
-      "dateTime": "2018-12-19T04:00:00+01:00",
-      "dynamisierung": ""
-    }
-  },
-  {
-    "legId": 2,
-    "origin": {
-      "place": "Hamburg Hbf, 20099 Hamburg, Deutschland",
-      "dateTime": "2018-12-19T09:30:00+01:00",
-      "dynamisierung": ""
-    },
-    "destination": {
-      "place": "Holzkirchen, 83607 Holzkirchen, Deutschland",
-      "dateTime": "2018-12-20T00:30:00+01:00",
-      "dynamisierung": ""
-    }
-  },
-  {
-    "legId": 4,
-    "origin": {
-      "place": "Holzkirchen, 83607 Holzkirchen, Deutschland",
-      "dateTime": "2018-12-20T06:45:00+01:00",
-      "dynamisierung": ""
-    },
-    "destination": {
-      "place": "Holzkirchen",
-      "dateTime": "2018-12-22T20:00:00+01:00",
-      "dynamisierung": ""
-    }
   }
-]
