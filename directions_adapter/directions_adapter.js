@@ -8,7 +8,7 @@ function request_direction() {
     };
     console.log(params);
     $.ajax({
-        url: "http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyAYKsG8djFd7WfSXzgG5_BVQLD8bzd-JFE"
+        url: "http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyDwMehy8bb37T65BetCsgavnh3FCXFI0N8"
     })
         .done(function (result) {
             console.log(result);
