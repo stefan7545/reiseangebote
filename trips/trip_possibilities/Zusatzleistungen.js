@@ -1,6 +1,6 @@
 class Zusatzleistungen {
     constructor () {
-        this.essen = "";
+        this.menue = "";
         this.gepaeck = "";
         this.extralegroom = "";
         this.notausgangsplatz = "";
