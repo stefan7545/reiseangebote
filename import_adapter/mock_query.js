@@ -1,10 +1,15 @@
-function getMockData(){
+function getMockData(callbackFunction) {
     $.ajax({
         url: "import_adapter/mock_data.json",
-        method: "get",
-        dataType: "json"
-    })
-        .done(function(result){
-            return result;
-        });
+        type: 'GET',
+        async: false,
+        cache: false,
+        timeout: 30000,
+        error: function () {
+            return true;
+        },
+        success: function (result) {
+            callbackFunction(result);
+        }
+    });
 }
