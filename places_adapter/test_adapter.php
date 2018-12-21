@@ -19,6 +19,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjEnwFyOFVJjAd3Mpj97F6iVd4L3_yRMo&libraries=places"></script>
 <script src="../trips/Trip.js"></script>
 <script src="../trips/trip_possibilities/Fussweg.js"></script>
+<script src="../trips/trip_possibilities/Bahn.js"></script>
+<script src="../trips/CombinedTrip.js"></script>
 <script>
     initPlaceService().then(function () {
         generateCombinedTrip();
