@@ -1,37 +1,19 @@
 class Trip {
-    constructor (origin, destination, originDateTime, destinationDateTime, distance, travelTime) {
-        this._origin = origin;
-        this._destination = destination;
-        this._originDateTime = originDateTime;
-        this._destinationDateTime = destinationDateTime;
-        this._distance = distance;
-        this._travelTime = travelTime;
+    constructor (trip, tripMode) {
+        if(tripMode == "directions"){
+            this._leg = trip.routes[0].legs[0];
+
+        } else {
+            this._leg = null;
+        }
     }
 
-
-
-
-    get origin() {
-        return this._origin;
-    }
-
-    get destination() {
-        return this._destination;
-    }
-
-    get originDateTime() {
-        return this._originDateTime;
-    }
-
-    get destinationDateTime() {
-        return this._destinationDateTime;
-    }
-
-    get distance() {
-        return this._distance;
-    }
-
-    get travelTime() {
-        return this._travelTime;
+    getLegInfo (part) {
+        try {
+            return this._leg[part];
+        } catch(err) {
+            document.getElementById("demo").innerHTML = err.message;
+            return null;
+        }
     }
 }
