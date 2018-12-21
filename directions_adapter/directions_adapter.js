@@ -17,7 +17,6 @@ function calculateDirectionsAPIRoute(origin, destination, travelTime, travelMode
             }
         }, function (response, status) {
             if (status === 'OK') {
-                console.log(response);
                 directionsValue = response;
                 resolve(response);
             } else {

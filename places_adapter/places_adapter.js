@@ -28,13 +28,11 @@ function getEntryValue(place) {
     }
 }
 
-function generateWaysToNextTrainStation(position, arrivalTime, externalTravelMode) {
+function generateWaysToNextTrainStation(position, arrivalTime, externalTravelMode, resolveMethod) {
     return new Promise(async resolve => {
         const type = "train_station";
         await searchNearbyPlace(position, type)
             .then(function (nextStations) {
-                console.log(nextStations);
-                inspect = nextStations;
                 for (let i = 0; i < 1; i++) {
                     calculateDirectionsAPIRoute(
                         position,
@@ -42,8 +40,7 @@ function generateWaysToNextTrainStation(position, arrivalTime, externalTravelMod
                         new Date(arrivalTime),
                         externalTravelMode)
                         .then(function (tripWay) {
-                            console.log(tripWay);
-                            resolve(new Fussweg(tripWay));
+                            resolve(resolveMethod(tripWay));
                         });
                 }
             })
@@ -59,10 +56,6 @@ function generateCombinedTripWithBahn(externalTravelMode) {
             .then(function (fussweg1) {
                 generateWaysToNextTrainStation(endpoint, aTime, externalTravelMode)
                     .then(function (fussweg2) {
-                        console.log(fussweg1.getLegInfo("end_location"));
-                        console.log(fussweg2.getLegInfo("start_location"));
-                        console.log(fussweg2.getLegInfo("start_address"));
-                        intercept = fussweg1;
                         var arrivalTime = new Date(aTime);
                         arrivalTime.setMinutes(arrivalTime.getMinutes() - (fussweg2.getLegInfo("duration").value / 60));
                         calculateDirectionsAPIRoute(
