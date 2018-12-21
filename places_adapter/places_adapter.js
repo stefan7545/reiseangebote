@@ -28,7 +28,7 @@ function getEntryValue(place) {
     }
 }
 
-function callInitMap(position, arrivalTime) {
+function generateWaysToNextTrainStation(position, arrivalTime, externalTravelMode) {
     return new Promise(async resolve => {
         const type = "train_station";
         await searchNearbyPlace(position, type)
@@ -40,7 +40,7 @@ function callInitMap(position, arrivalTime) {
                         position,
                         {lat: nextStations[i].position.lat(), lng: nextStations[i].position.lng()},
                         new Date(arrivalTime),
-                        "WALKING")
+                        externalTravelMode)
                         .then(function (tripWay) {
                             console.log(tripWay);
                             resolve(new Fussweg(tripWay));
@@ -50,16 +50,14 @@ function callInitMap(position, arrivalTime) {
     })
 }
 
-var intercept;
-
-function generateCombinedTrip() {
+function generateCombinedTripWithBahn(externalTravelMode) {
     new Promise(resolve => {
         var aTime = "2018-12-18T00:30:00+01:00";
         var startpoint = {lat: 47.8789417, lng: 11.694407100000035};
         var endpoint = {lat: 50.1043513, lng: 8.650422899999967};
-        callInitMap(startpoint, aTime)
+        generateWaysToNextTrainStation(startpoint, aTime, externalTravelMode)
             .then(function (fussweg1) {
-                callInitMap(endpoint, aTime)
+                generateWaysToNextTrainStation(endpoint, aTime, externalTravelMode)
                     .then(function (fussweg2) {
                         console.log(fussweg1.getLegInfo("end_location"));
                         console.log(fussweg2.getLegInfo("start_location"));

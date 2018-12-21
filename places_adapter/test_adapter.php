@@ -23,7 +23,7 @@
 <script src="../trips/CombinedTrip.js"></script>
 <script>
     initPlaceService().then(function () {
-        generateCombinedTrip();
+        generateCombinedTripWithBahn("WALKING");
     });
 </script>
 </body>

@@ -6,4 +6,8 @@ class TripSelections {
     addSelection(trip, travelMode) {
         this._selection.push({travelMode: travelMode, trip: trip});
     }
+
+    getSelection(i) {
+        return this._selection[i];
+    }
 }
