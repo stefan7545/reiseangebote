@@ -1,6 +1,12 @@
 
 function generateTrips(leg) {
-    generateTransitWays(leg);
+    //generateTransitWays(leg);
+    var originStations = getNextRailwayStations(leg.origin.place);
+    var destinationStations = getNextRailwayStations(leg.origin.place);
+}
+
+function getNextRailwayStations(){
+    
 }
 
 function generateTransitWays(leg) {

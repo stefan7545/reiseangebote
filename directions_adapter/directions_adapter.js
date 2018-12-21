@@ -1,9 +1,9 @@
-var directionsService;
-var directionsValue;
-
-function initMap() {
-    directionsService = new google.maps.DirectionsService;
-}
+// var directionsService;
+// var directionsValue;
+//
+// function initMap() {
+//     directionsService = new google.maps.DirectionsService;
+// }
 
 function calculateDirectionsAPIRoute(origin, destination, travelTime, travelMode) {
     let travelTimeInSec = travelTime.getTime() / 60;
