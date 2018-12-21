@@ -6,21 +6,23 @@
 // }
 
 function calculateDirectionsAPIRoute(origin, destination, travelTime, travelMode) {
-    let travelTimeInSec = travelTime.getTime() / 60;
-    directionsService.route({
-        origin: origin,
-        destination: destination,
-        travelMode: travelMode,
-        transitOptions: {
-            arrivalTime: travelTime
-        }
-    }, function (response, status) {
-        if (status === 'OK') {
-            console.log(response);
-            directionsValue = response;
-            return response;
-        } else {
-            window.alert('Directions request failed due to ' + status);
-        }
+    return new Promise(resolve => {
+        let travelTimeInSec = travelTime.getTime() / 60;
+        directionsService.route({
+            origin: origin,
+            destination: destination,
+            travelMode: travelMode,
+            transitOptions: {
+                arrivalTime: travelTime
+            }
+        }, function (response, status) {
+            if (status === 'OK') {
+                console.log(response);
+                directionsValue = response;
+                resolve(response);
+            } else {
+                resolve(Error('Directions request failed due to ' + status));
+            }
+        });
     });
 }
