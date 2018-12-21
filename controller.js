@@ -2,25 +2,30 @@ var intercept;
 var tripSelection;
 
 async function generateTravelSolutions(leg) {
-    let result1 = getGeocodePosition(leg, leg.origin.place, "origin");
-    let result2 = getGeocodePosition(leg, leg.destination.place, "destination");
-    await result1 + await result2;
+    return new Promise(async resolve => {
+        let result1 = getGeocodePosition(leg, leg.origin.place, "origin");
+        let result2 = getGeocodePosition(leg, leg.destination.place, "destination");
+        await result1 + await result2;
 
-    tripSelection = new TripSelections();
+        tripSelection = new TripSelections();
 
-    let wait1 = generateAndAddToSelection(leg, function (res) {
-        return new Fussweg(res)
-    }, "WALKING");
-    let wait2 = generateAndAddToSelection(leg, function (res) {
-        return new Privatwagen(res)
-    }, "DRIVING");
-    let wait3 = generateCombinedTripSolutionsWithBahn(leg, "WALKING");
-    await wait1 + await wait2 + await wait3;
-
+        let wait1 = generateAndAddToSelection(leg, function (res) {
+            return new Fussweg(res)
+        }, "WALKING");
+        let wait2 = generateAndAddToSelection(leg, function (res) {
+            return new Privatwagen(res)
+        }, "DRIVING");
+        let wait3 = generateCombinedTripSolutionsWithBahn(leg, "WALKING");
+        Promise.all([wait1, wait2, wait3])
+            .then(function(){
+                resolve(tripSelection);
+            })
+    })
 }
 
 function getGeocodePosition(leg, address, direc) {
     return new Promise(function (resolve, reject) {
+        console.log(leg + "    " + address + "      " + direc);
         geocoder.geocode({'address': address}, function (results, status) {
             if (status === 'OK') {
                 leg[direc].geoCode = results[0].geometry.location;
