@@ -1,7 +1,7 @@
 class Privatwagen extends Trip {
     constructor(trip) {
         console.log(trip);
-        super(trip, "DRIVING");
+        super(trip, "directions");
 
     }
 }
